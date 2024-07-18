@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col">
+        <div class="flex flex-1">
+            <!-- Sidebar -->
+            <aside class="bg-white w-1/4 min-h-screen shadow-lg p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h1 class="text-2xl font-bold">Banksin</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li class="mb-4"><a href="#" class="text-blue-500 font-semibold">Dashboard</a></li>
+                        <li class="mb-4"><a href="#" class="text-gray-600">Analytics</a></li>
+                        <li class="mb-4"><a href="#" class="text-gray-600">Transactions</a></li>
+                        <li class="mb-4"><a href="#" class="text-gray-600">Documents</a></li>
+                        <li class="mb-4"><a href="#" class="text-gray-600">Operations</a></li>
+                        <li class="mb-4"><a href="#" class="text-gray-600">Update</a></li>
+                    </ul>
+                </nav>
+                <div class="mt-6">
+                    <h2 class="text-lg font-semibold text-gray-600">Account</h2>
+                    <ul>
+                        <li class="mt-4"><a href="#" class="text-gray-600">Activity</a></li>
+                        <li class="mt-4"><a href="#" class="text-gray-600">Balance</a></li>
+                        <li class="mt-4"><a href="#" class="text-gray-600">Spending</a></li>
+                        <li class="mt-4"><a href="#" class="text-gray-600">Refund</a></li>
+                    </ul>
+                </div>
+                <div class="mt-6">
+                    <a href="#" class="text-gray-600">Settings</a>
+                    <a href="#" class="text-gray-600 mt-4 block">Get Help</a>
+                    <a href="#" class="text-red-500 mt-4 block">Log Out</a>
+                </div>
+            </aside>
+            <!-- Main Content -->
+            <main class="flex-1 p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <div>
+                        <h1 class="text-xl font-bold">Hey Johnson 👋</h1>
+                        <p class="text-gray-500">Welcome to your transaction partner</p>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="text" placeholder="Search..." class="border rounded-lg px-4 py-2 mr-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Steph_Curry_P20230117AS-1347_%28cropped%29.jpg" class="w-10 h-10 rounded-full" alt="User">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                    <div class="col-span-2 bg-white p-6 rounded-lg shadow-lg">
+                        <h2 class="text-3xl font-bold mb-2">$467,635</h2>
+                        <p class="text-gray-500 mb-6">Your total balance</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <p class="text-gray-600">Income from investments: $324,435</p>
+                            <p class="text-gray-600">Income from accounts: $143,200</p>
+                        </div>
+                        <div>
+                            <canvas id="moneyFlowChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h2 class="text-xl font-bold mb-4">Wallet</h2>
+                        <div class="bg-blue-500 text-white p-4 rounded-lg h-[100px]">
+                            <p class="font-semibold">Banksin</p>
+                            <p class="mt-2">5022 3386 9820 1246</p>
+                            <p class="mt-2">Expiry: 09/24</p>
+                        </div>
+                        <div class="mt-4 grid grid-cols-2 gap-4">
+                            <button class="bg-gray-200 p-4 rounded-lg">Send</button>
+                            <button class="bg-gray-200 p-4 rounded-lg">Request</button>
+                            <button class="bg-gray-200 p-4 rounded-lg">Crypto</button>
+                            <button class="bg-gray-200 p-4 rounded-lg">More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold">Income</h3>
+                        <p class="mt-2 text-2xl">$342,394</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold">Expend</h3>
+                        <p class="mt-2 text-2xl">$42,351</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold">Saving</h3>
+                        <p class="mt-2 text-2xl">$137,240</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold">Investment</h3>
+                        <p class="mt-2 text-2xl">$12,407</p>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-xl font-bold mb-4">Recent Transactions</h2>
+                    <ul>
+                        <li class="flex justify-between py-2 border-b">
+                            <div class="flex">
+                                <img src="https://www.svgrepo.com/show/452196/facebook-1.svg" class="h-5">
+                                <span>Facebook Charge</span>
+                            </div>
+                            <span>-$5,332</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b">
+                            <div class="flex">
+                                <img src="https://www.svgrepo.com/show/504865/shopee.svg" class="h-5">
+                                <span>Shopee Payment</span>
+                            </div>
+                            <span>-$4,382</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b">
+                            <div class="flex">
+                                <img src="https://www.svgrepo.com/show/387423/dribble.svg" class="h-5">
+                                <span>Dribbble Payment</span>
+                            </div>
+                            
+                            <span>-$80,329</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b">
+                            <div class="flex">
+                                <img src="https://www.svgrepo.com/show/303156/tiktok-icon-white-1-logo.svg" class="h-5">
+                                <span>Tiktok Sponsored</span>
+                            </div>
+                            
+                            <span>+$92,840</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b">
+                            <span>Bukalapak</span>
+                            <span>-$4,372</span>
+                        </li>
+                    </ul>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
